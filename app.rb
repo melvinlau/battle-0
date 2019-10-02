@@ -1,17 +1,26 @@
-# to run with "rackup"
+# to run with "rackup ____filename_____"
 require 'sinatra/base'
-#  to run with "shotgun ___ -p 4567"
+#  to run with "shotgun ___config.ru___ -p 4567"
 require 'sinatra'
 set :session_secret, 'super secret'
 
 class Battle < Sinatra::Base
+
+  enable :sessions
+
   get '/' do
     erb(:index)
   end
 
   post '/names' do
-    @player_1_name = params[:player_1_name]
-    @player_2_name = params[:player_2_name]
+    session[:player_1_name] = params[:player_1_name]
+    session[:player_2_name] = params[:player_2_name]
+    redirect("/play")
+  end
+
+  get '/play' do
+    @player_1_name = session[:player_1_name]
+    @player_2_name = session[:player_2_name]
     erb(:play)
   end
 
