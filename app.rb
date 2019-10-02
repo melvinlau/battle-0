@@ -4,6 +4,8 @@ require 'sinatra/base'
 require 'sinatra'
 set :session_secret, 'super secret'
 
+require_relative './lib/player'
+
 class Battle < Sinatra::Base
 
   enable :sessions
@@ -19,14 +21,15 @@ class Battle < Sinatra::Base
   end
 
   get '/play' do
-    @player_1_name = $player1.name
-    @player_2_name = $player2.name
+    @player_1 = $player1
+    @player_2 = $player2
     erb(:play)
   end
 
   get '/attack' do
-    @player_1_name = $player1.name
-    @player_2_name = $player2.name
+    @player_1 = $player1
+    @player_2 = $player2
+    @player_1.attack(@player_2)
     erb(:attack)
   end
 
