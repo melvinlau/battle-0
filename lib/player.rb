@@ -11,4 +11,8 @@ class Player
     @HP -= 10
   end
 
+  def lose
+    true if @HP <= 0
+  end
+
 end

@@ -22,6 +22,16 @@ describe Game do
       expect(player_2).to receive(:receive_damage)
       game.attack(player_2)
     end
+
+    it 'damages the opponent 10 times when attack is played 19 times' do
+      allow(player_1).to receive(:receive_damage)
+      allow(player_2).to receive(:receive_damage)
+      expect(player_2).to receive(:receive_damage).exactly(10).times
+      19.times do
+        game.switch_turn
+        game.attack(game.victim)
+      end
+    end
   end
 
   describe '#switch_turn' do

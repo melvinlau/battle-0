@@ -1,4 +1,10 @@
-<h1> <%= @game.turn.name %>'s turn </h1>
+
+<% if @game.game_in_progress %>
+  <h1> <%= @game.turn.name %>'s turn </h1>
+  
+  <% else %>
+  <h1> <%= @game.display_loser %> loses! </h1>
+  <% end %>
 
 <h1>
   <%= @game.player_1.name %> VS. <%= @game.player_2.name %>
@@ -9,8 +15,8 @@
   <%= @game.player_2.name%>: <%= @game.player_2.HP%>HP
 </h2>
 
+<% if @game.game_in_progress %>
 <form action='/attack'>
-
   <input type='submit' name='Attack' value='Attack'>
-
 </form>
+<% end %>

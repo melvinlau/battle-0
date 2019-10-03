@@ -19,5 +19,10 @@ describe Player do
     it 'reduces the player hit points' do
       expect { squirtle.receive_damage }.to change { squirtle.HP }.by(-10)
     end
+
+    it 'reduces to 0HP after being hit 10 times' do
+      10.times { squirtle.receive_damage}
+      expect(squirtle.HP).to eq 0
+    end
   end
 end

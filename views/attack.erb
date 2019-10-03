@@ -2,8 +2,11 @@
   <%= @game.turn.name%> attacked <%= @game.victim.name %>
 </h1>
 
-<form action='/play'>
+<% if @game.game_in_progress %>
+  <form action='/play'>
 
   <input type='submit' name='OK' value='OK'>
 
 </form>
+
+<% end %>
