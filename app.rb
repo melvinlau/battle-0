@@ -15,22 +15,24 @@ class Battle < Sinatra::Base
     erb(:index)
   end
 
+  before do
+    @game = Game.instance
+  end
+
   post '/names' do
     player_1 = Player.new(params[:player_1])
     player_2 = Player.new(params[:player_2])
-    $game = Game.new(player_1, player_2)
+    @game = Game.create(player_1,player_2)
     redirect("/play")
   end
 
   get '/play' do
-    @game = $game
     @game.gameover_check
     @game.switch_turn
     erb(:play)
   end
 
   get '/attack' do
-    @game = $game
     @game.attack(@game.victim)
     erb(:attack)
   end
