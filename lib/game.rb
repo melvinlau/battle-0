@@ -7,8 +7,8 @@ class Game
   def initialize(player1, player2)
     @player_1 = player1
     @player_2 = player2
-    @players = [@player_1.name, @player_2.name]
-    @turn = player_1.name
+    @players = [@player_1, @player_2]
+    @turn = player_2
   end
 
   def attack(player)
@@ -17,5 +17,9 @@ class Game
 
   def switch_turn
     @turn = @players.reject {|player| player==turn }[0]
+  end
+
+  def victim
+    @players.reject {|player| player==turn }[0]
   end
 end
