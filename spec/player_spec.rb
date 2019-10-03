@@ -15,13 +15,6 @@ describe Player do
     end
   end
 
-  describe '#attack' do
-    it 'damages the player' do
-      expect(squirtle).to receive(:receive_damage)
-      charmander.attack(squirtle)
-    end
-  end
-
   describe '#receive_damage' do
     it 'reduces the player hit points' do
       expect { squirtle.receive_damage }.to change { squirtle.HP }.by(-10)
