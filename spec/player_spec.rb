@@ -16,7 +16,12 @@ describe Player do
   end
 
   describe '#receive_damage' do
-    it 'reduces the player hit points' do
+
+    before(:each) do
+      allow_any_instance_of(Object).to receive(:rand) { 5 }
+    end
+
+    it 'reduces the player hit points by a random amount' do
       expect { squirtle.receive_damage }.to change { squirtle.HP }.by(-10)
     end
 

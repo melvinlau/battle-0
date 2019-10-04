@@ -32,6 +32,7 @@ describe Game do
         game.attack(game.victim)
       end
     end
+
   end
 
   describe '#switch_turn' do
