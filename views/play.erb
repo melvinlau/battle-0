@@ -24,10 +24,17 @@
 </h2>
 
 <% if @game.game_in_progress %>
-  <form action='/attack'>
-    <input type='submit' name='Attack' value='Attack'>
-  </form>
-  <form action='/poison'>
-    <input type='submit' name='Poison' value='Poison'>
-  </form>
+  <% unless @game.turn.name == "Compy" %>
+    <form action='/attack'>
+      <input type='submit' name='Attack' value='Attack'>
+    </form>
+    <form action='/poison'>
+      <input type='submit' name='Poison' value='Poison'>
+    </form>
+  <% end %>
+  <% if @game.turn.name == "Compy" %>
+    <form action='/attack'>
+      <input type='submit' value="Compy's Turn">
+    </form>
+  <% end %>
 <% end %>
