@@ -12,7 +12,8 @@ class Battle < Sinatra::Base
   enable :sessions
 
   get '/' do
-    erb(:index)
+    @page = :index
+    erb(:template)
   end
 
   before do
@@ -26,26 +27,30 @@ class Battle < Sinatra::Base
     redirect("/play")
   end
 
-  
+
   get '/play' do
     @game.gameover_check
     @game.switch_turn
     @game.status_check
-    erb(:play)
+    @page = :play
+    erb(:template)
   end
-  
+
   get '/attack' do
     @game.attack(@game.victim)
-    erb(:attack)
+    @page = :attack
+    erb(:template)
   end
-  
+
   get '/poison' do
     @game.poison(@game.victim)
-    erb(:poison)
+    @page = :poison
+    erb(:template)
   end
-  
+
   get '/single_player' do
-    erb :single_player
+    @page = :single_player
+    erb :template
   end
 
   post '/single_setup' do

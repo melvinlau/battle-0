@@ -1,3 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+</body>
+</html>
+
+
+
 <% if @game.game_in_progress %>
   <h1> <%= @game.turn.name %>'s turn </h1>
 <% else %>
@@ -18,10 +33,14 @@
   <%= @game.player_1.name %> VS. <%= @game.player_2.name %>
 </h1>
 
-<h2>
-  <%= @game.player_1.name%>: <%= @game.player_1.HP%>HP
-  <%= @game.player_2.name%>: <%= @game.player_2.HP%>HP
-</h2>
+<div>
+  <div class="left">
+    <%= @game.player_1.name%>: <%= @game.player_1.HP%>HP
+  </div>
+  <div class="right">
+    <%= @game.player_2.name%>: <%= @game.player_2.HP%>HP
+  </div>
+</div>
 
 <% if @game.game_in_progress %>
   <% unless @game.turn.name == "Compy" %>
