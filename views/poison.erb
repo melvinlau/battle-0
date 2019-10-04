@@ -1,0 +1,12 @@
+<h1>
+  <%= @game.turn.name%> used Poison!
+</h1>
+
+<% if @game.game_in_progress %>
+  <form action='/play'>
+
+  <input type='submit' name='OK' value='OK'>
+
+</form>
+
+<% end %>
