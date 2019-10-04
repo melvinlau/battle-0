@@ -15,6 +15,14 @@ class Player
     true if @HP <= 0
   end
 
+  def poisoned?
+    @status == :poisoned
+  end
+
+  def set_status(status)
+    @status = status
+  end
+
   def random
     rand(11)
   end

@@ -30,4 +30,13 @@ describe Player do
       expect(squirtle.HP).to eq 0
     end
   end
+
+  describe "set_status" do
+    context 'when poisoned' do
+      it 'sets status variable to :poisoned' do
+        squirtle.set_status(:poisoned)
+        expect(squirtle).to be_poisoned
+      end
+    end
+  end
 end

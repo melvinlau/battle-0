@@ -32,7 +32,14 @@ describe Game do
         game.attack(game.victim)
       end
     end
+  end
 
+  describe '#poison' do
+    it 'calls poison against the victim' do
+      allow_any_instance_of(Object).to receive(:rand) { 3 }
+      expect(player_2).to receive(:set_status).with(:poisoned)
+      game.poison(player_2)
+    end
   end
 
   describe '#switch_turn' do

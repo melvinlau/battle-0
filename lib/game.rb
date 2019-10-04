@@ -29,6 +29,10 @@ class Game
     display_loser
   end
 
+  def poison(player)
+    player.set_status(:poisoned) if rand(1..3) > 2
+  end
+
   def display_loser
     if player_1.lose 
       player_1.name

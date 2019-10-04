@@ -37,6 +37,11 @@ class Battle < Sinatra::Base
     erb(:attack)
   end
 
+  get '/poison' do
+    @game.poison(@game.victim)
+    erb(:poison)
+  end
+
   # start the server only if the ruby file is executed directly
   run! if app_file == $0
 end
