@@ -7,8 +7,8 @@ class Player
     @HP = hp
   end
 
-  def receive_damage
-    @HP -= 2 * random
+  def receive_damage(multiplier = 2)
+    @HP -= multiplier * random
   end
 
   def lose

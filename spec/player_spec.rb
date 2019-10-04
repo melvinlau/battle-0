@@ -29,6 +29,12 @@ describe Player do
       10.times { squirtle.receive_damage}
       expect(squirtle.HP).to eq 0
     end
+
+    it "reduces by a random amount if poisoned" do
+      allow(squirtle).to receive(:poisoned?) { true }
+      expect { squirtle.receive_damage(3) }.to change{ squirtle.HP }.by(-3 * rand(11))
+    end
+
   end
 
   describe "set_status" do

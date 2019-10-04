@@ -29,6 +29,7 @@ class Battle < Sinatra::Base
   get '/play' do
     @game.gameover_check
     @game.switch_turn
+    @game.status_check
     erb(:play)
   end
 

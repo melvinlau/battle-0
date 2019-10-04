@@ -35,10 +35,23 @@ describe Game do
   end
 
   describe '#poison' do
+
+    before(:each) { allow_any_instance_of(Object).to receive(:rand) { 2 } }
+
     it 'calls poison against the victim' do
-      allow_any_instance_of(Object).to receive(:rand) { 3 }
       expect(player_2).to receive(:set_status).with(:poisoned)
       game.poison(player_2)
+    end
+
+  end
+
+  describe "#status_check" do
+    context "when player is poisoned" do
+      it "reduces the damage in the player" do
+        expect(player_2).to receive(:receive_damage).with(1)
+        allow(player_2).to receive(:poisoned?) { true }
+        game.status_check
+      end
     end
   end
 

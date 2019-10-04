@@ -30,11 +30,11 @@ class Game
   end
 
   def poison(player)
-    player.set_status(:poisoned) if rand(1..3) > 2
+    player.set_status(:poisoned) if rand(1..2) > 1
   end
 
   def display_loser
-    if player_1.lose 
+    if player_1.lose
       player_1.name
     else
       player_2.name
@@ -47,6 +47,10 @@ class Game
 
   def self.instance
     @game
+  end
+
+  def status_check
+    @turn.receive_damage(1) if @turn.poisoned?
   end
 
 end
